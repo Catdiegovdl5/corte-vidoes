@@ -1,0 +1,7 @@
+requests
+pyTelegramBotAPI
+freelancersdk
+python-dotenv
+groq
+pytest
+pytest-mock

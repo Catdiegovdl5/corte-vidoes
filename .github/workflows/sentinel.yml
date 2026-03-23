@@ -1,0 +1,38 @@
+name: Global Sentinel Workflow
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  hunt-leads:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Execution: Lead Hunting (Sentinel)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          FLN_OAUTH_TOKEN: ${{ secrets.FLN_OAUTH_TOKEN }}
+          HTTP_PROXY: ${{ secrets.HTTP_PROXY }}
+          HTTPS_PROXY: ${{ secrets.HTTPS_PROXY }}
+        run: python sentinel.py
+
+      - name: Commit Leads Ready
+        run: |
+          git config --global user.name "Sentinel Bot"
+          git config --global user.email "sentinel@jumbo-project.com"
+          git add leads_ready.json || true
+          git commit -m "chore: update leads_ready.json [skip ci]" || echo "No changes to commit"
