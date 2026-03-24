@@ -5,3 +5,8 @@ python-dotenv
 groq
 pytest
 pytest-mock
+yt-dlp
+moviepy
+openai-whisper
+ffmpeg-python
+torch

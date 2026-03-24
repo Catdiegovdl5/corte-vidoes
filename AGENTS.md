@@ -51,3 +51,15 @@ O arsenal está pronto para operação autônoma 24/7.
 - **Container:** \`Dockerfile\` universal para deploy em VPS.
 - **Blindagem Ghost Mode:** Suporte a Proxy Residencial em todos os módulos de rede.
 - **Secrets:** Chaves de API e tokens centralizados via Env Vars (ver \`guia_segredos_cloud.md\`).
+
+## Projeto Jumbo: Operação Raiam Santos (Fábrica de Cortes)
+O arsenal agora inclui uma linha de produção automatizada para o canal do Raiam Santos.
+- **Hunter:** \`src/youtube_hunter.py\` (yt-dlp para caçar vídeos virais).
+- **Processor:** \`src/video_processor.py\` (Whisper + MoviePy para cortes 9:16 e legendas).
+- **Style:** \`src/caption_generator.py\` (Persona Diego refinada para tom provocativo/Raiam).
+- **Orchestrator:** \`start_jumbo_factory.py\` (Comando único para rodar toda a fábrica).
+
+### Comando Master para o Lenovo IdeaPad:
+\`\`\`bash
+python3 start_jumbo_factory.py
+\`\`\`
