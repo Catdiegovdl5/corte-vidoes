@@ -29,10 +29,13 @@ class AIAnalyst:
 
         prompt = f"""
         Aja como Diego, Diretor de Conteúdo Viral. Sua missão é analisar a transcrição de um vídeo do RAIAM SANTOS.
-        Identifique os 3 momentos onde ele está falando algo que:
-        1. Gere choque de realidade (Mindset/Dinheiro).
-        2. Seja polêmico ou gere comentários.
-        3. Seja uma lição direta e arrogante (Raiam Style).
+        Identifique os 3 momentos mais virais, priorizando:
+        1. SOLO RAIAM: Ignore momentos de reação, entrevistas com terceiros ou diálogos secundários.
+        2. CHOQUE DE REALIDADE: Mindset, dinheiro, críticas à mediocridade ou lições arrogantes/diretas (Raiam Style).
+        3. ALTA ENERGIA: Momentos de fala contínua, sem pausas longas ou filler content.
+        4. POLÊMICA: Assuntos que gerem comentários imediatos.
+
+        FILTRO CRÍTICO: Se o segmento envolver outra pessoa falando por mais de 5 segundos, DESCARTE. Queremos apenas o monólogo de poder do Raiam.
 
         Retorne APENAS um JSON no seguinte formato:
         [
