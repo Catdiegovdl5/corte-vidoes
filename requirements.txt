@@ -10,3 +10,5 @@ moviepy
 openai-whisper
 ffmpeg-python
 torch
+mediapipe
+opencv-python

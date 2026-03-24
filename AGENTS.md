@@ -63,3 +63,9 @@ O arsenal agora inclui uma linha de produção automatizada para o canal do Raia
 \`\`\`bash
 python3 start_jumbo_factory.py
 \`\`\`
+
+## Arsenal de Vídeo: Ultra-Intelligence (Cortes do Raiam)
+O sistema agora possui visão computacional e análise semântica.
+- **AI Analyst:** \`src/ai_analyst.py\` (Identifica momentos de alto impacto via LLM).
+- **Auto-Reframe:** \`src/video_processor.py\` (Detecta o rosto do Raiam via MediaPipe e mantém centralizado em 9:16).
+- **Workflow:** Download -> Transcrição -> Análise Semântica -> Auto-Reframe -> Legenda Viral.
