@@ -36,19 +36,20 @@ def run_factory():
         logger.info("🎙️ Transcrevendo para análise semântica...")
         transcript = processor.transcribe_full(video_path)
 
-        # 4. Detecção de Momentos Virais via IA
+        # 4. Detecção de Momentos Virais via IA (Classificação Solo vs React)
         logger.info("🧠 Identificando momentos de 'Choque de Realidade'...")
         viral_moments = analyst.identify_viral_moments(transcript.get('segments', []))
 
         for i, moment in enumerate(viral_moments):
-            logger.info(f"🔥 Processando Clip {i+1}: {moment['reason']}")
+            logger.info(f"🔥 Processando Clip {i+1} [{moment.get('type', 'solo')}]: {moment['reason']}")
 
-            # 5. Corte Inteligente + Auto-Reframe (Foco no Rosto)
+            # 5. Corte Inteligente com Layout Adaptativo
             reels_path = processor.process_reels(
                 video_path,
                 start_time=moment['start'],
                 end_time=moment['end'],
-                viral_reason=moment['reason']
+                viral_reason=moment['reason'],
+                content_type=moment.get('type', 'solo')
             )
 
             # 6. Gerar Legenda Magnética
@@ -56,15 +57,12 @@ def run_factory():
             logger.info(f"✍️ Legenda Gerada para o Clip {i+1}: {caption}")
 
             # 7. Upload para Instagram (Trincheira 1: Meta API)
-            # NOTA: A API da Meta exige que o vídeo esteja em uma URL pública.
-            # Em modo 'Cloud', o vídeo deve ser enviado para um storage (S3/GCS) primeiro.
-            # Por enquanto, mantemos a estrutura pronta para o sinal de 'GO'.
             video_public_url = os.environ.get("TEMP_VIDEO_HOST_URL", "MOCK_URL")
             if video_public_url != "MOCK_URL":
                 logger.info(f"📤 Iniciando Upload Oficial via Graph API para: {reels_path}")
                 uploader.upload_reels(video_url=video_public_url, caption=caption)
             else:
-                logger.warning(f"⚠️ Upload Ignorado: Configure TEMP_VIDEO_HOST_URL para produção. Vídeo local: {reels_path}")
+                logger.warning(f"⚠️ Upload Ignorado: Configure TEMP_VIDEO_HOST_URL. Vídeo local: {reels_path}")
 
             logger.info(f"🚀 REELS PRONTO: {reels_path}")
 
