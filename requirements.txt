@@ -1,0 +1,14 @@
+requests
+pyTelegramBotAPI
+freelancersdk
+python-dotenv
+groq
+pytest
+pytest-mock
+yt-dlp
+moviepy
+openai-whisper
+ffmpeg-python
+torch
+mediapipe
+opencv-python

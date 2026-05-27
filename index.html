@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio de Edição de Vídeo | Eduardo Borges</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #f8fafc;
+            --accent-color: #3b82f6;
+            --card-bg: #1e293b;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: var(--card-bg);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+        header h1 { margin: 0; font-size: 2.5rem; }
+        header p { color: #94a3b8; font-size: 1.2rem; max-width: 600px; margin: 1rem auto; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+        h2 { color: var(--accent-color); border-bottom: 2px solid var(--card-bg); padding-bottom: 0.5rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .card { background-color: var(--card-bg); padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { margin-top: 0; color: #60a5fa; }
+        .metric { font-weight: bold; color: #22d3ee; font-size: 1.2rem; }
+        footer { text-align: center; padding: 2rem; margin-top: 2rem; background-color: var(--card-bg); color: #64748b; }
+        a { color: var(--accent-color); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .tag { display: inline-block; background: #334155; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem; margin: 0.2rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Eduardo Borges</h1>
+        <p>Editor de Vídeo | Especialista em Alta Retenção, Cortes Virais e Automação</p>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Sobre Mim</h2>
+            <p>Especialista na criação de conteúdo viral (Shorts/Reels/TikTok) e edição de formatos educacionais longos. Foco total em retenção de público, narrativa dinâmica e engenharia de atenção. Além da edição manual, desenvolvo automações na nuvem para processamento de vídeos.</p>
+            <div>
+                <span class="tag">Premiere Pro</span> <span class="tag">CapCut</span> <span class="tag">After Effects</span> <span class="tag">Python</span> <span class="tag">Sound Design</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>🏆 Cases de Sucesso</h2>
+            <div class="grid">
+                <!-- Case 1 -->
+                <div class="card">
+                    <h3>TikTok: Nicho Geek (@meu.treino8)</h3>
+                    <p class="metric">56.600+ Visualizações em 1 vídeo</p>
+                    <p><strong>Resultados:</strong> 34.8k+ curtidas e 1.2k seguidores orgânicos.</p>
+                    <p><strong>Estratégia:</strong> Retenção nos primeiros 3s, hooks imersivos, edição dinâmica de manhuas e sound design épico.</p>
+                </div>
+                <!-- Case 2 -->
+                <div class="card">
+                    <h3>YouTube: Reacts (@CapituloV.I.P)</h3>
+                    <p class="metric">370 Vídeos Publicados</p>
+                    <p><strong>Resultados:</strong> Construção sólida de canal com identidade visual consistente.</p>
+                    <p><strong>Estratégia:</strong> Layout de React Inteligente (PiP), cortes rápidos de comédia, e ritmo acelerado para formato Shorts.</p>
+                </div>
+                <!-- Case 3 -->
+                <div class="card">
+                    <h3>Instagram Reels (@subindoseuqi)</h3>
+                    <p class="metric">2.032+ Visualizações Orgânicas</p>
+                    <p><strong>Resultados:</strong> 210 posts consolidados em personal branding.</p>
+                    <p><strong>Estratégia:</strong> Edição limpa estilo vlog, cortes em "J" e "L" para mascarar respirações e manter o ritmo de fala natural.</p>
+                </div>
+                <!-- Case 4 -->
+                <div class="card">
+                    <h3>Infoprodutos & Cursos</h3>
+                    <p class="metric">Aulas Longas e Didáticas</p>
+                    <p><strong>Resultados:</strong> Edição do curso "Marília" (Nutrição / Inteligência Emocional).</p>
+                    <p><strong>Estratégia:</strong> Tratamento de áudio profundo, inserção de letterings de apoio, jump cuts suaves.</p>
+                </div>
+                <!-- Case 5: Cloud Automation -->
+                <div class="card">
+                    <h3>Automação Cloud (GitHub)</h3>
+                    <p class="metric">Projeto "Corte Vídeos"</p>
+                    <p><strong>Repositório:</strong> <a href="https://github.com/Catdiegovdl5/corte-vidoes" target="_blank">corte-vidoes</a></p>
+                    <p><strong>Estratégia:</strong> Desenvolvimento de scripts em Python para identificar momentos virais e aplicar automação de cortes inteligentes (Layout React) direto na nuvem.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>Portfólio hospedado via GitHub Pages | 2026</p>
+    </footer>
+</body>
+</html>
