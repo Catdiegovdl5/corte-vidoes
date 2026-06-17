@@ -12,3 +12,6 @@ ffmpeg-python
 torch
 mediapipe
 opencv-python
+g4f
+librosa
+numpy
