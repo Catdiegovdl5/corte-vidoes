@@ -1,84 +1,369 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio de Edição de Vídeo | Diego</title>
+    <title>DIEGO // EDITOR.CORE</title>
+    <!-- Google Fonts: Syncopate para o título, Share Tech Mono para texto técnico, Inter para corpo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;600;900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --bg-color: #0b1121; --text-color: #f8fafc; --accent-color: #3b82f6; --card-bg: #1e293b; --highlight: #22d3ee; }
-        body { font-family: 'Inter', 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; line-height: 1.6; }
-        header { background: linear-gradient(180deg, #1e293b 0%, #0b1121 100%); padding: 5rem 2rem; text-align: center; border-bottom: 2px solid var(--accent-color); }
-        header h1 { margin: 0; font-size: 3.5rem; letter-spacing: -1px; }
-        header p { color: #94a3b8; font-size: 1.2rem; max-width: 600px; margin: 1rem auto; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
-        h2 { color: var(--text-color); border-bottom: 2px solid var(--card-bg); padding-bottom: 0.5rem; margin-top: 2rem; font-size: 2rem; display: flex; align-items: center; gap: 10px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 2rem; }
-        .card { background-color: var(--card-bg); padding: 2rem; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.5); transition: transform 0.3s, box-shadow 0.3s; border: 1px solid #334155; }
-        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.6); border-color: var(--accent-color); }
-        .card h3 { margin-top: 0; color: #60a5fa; font-size: 1.4rem; }
-        .metric { font-weight: 800; color: var(--highlight); font-size: 1.8rem; margin: 0.5rem 0; text-shadow: 0 0 10px rgba(34, 211, 238, 0.2); }
-        .sub-metric { color: #cbd5e1; font-weight: 600; font-size: 1.1rem; }
-        footer { text-align: center; padding: 3rem; margin-top: 3rem; background-color: var(--card-bg); color: #64748b; border-top: 1px solid #334155; }
-        a { color: var(--accent-color); text-decoration: none; font-weight: bold; }
-        a:hover { text-decoration: underline; color: var(--highlight); }
-        .tag { display: inline-block; background: #334155; padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem; margin: 0.3rem 0.3rem 0 0; font-weight: 600; }
-        .highlight-box { background: rgba(59, 130, 246, 0.1); border-left: 4px solid var(--accent-color); padding: 1rem; margin-bottom: 1.5rem; border-radius: 0 8px 8px 0; }
+        :root { 
+            --bg-base: #050505; 
+            --bg-surface: #0a0a0c;
+            --text-main: #f8fafc; 
+            --text-muted: #64748b;
+            --neon-red: #ff003c; 
+            --neon-white: #ffffff;
+            --cyber-blue: #00f0ff;
+            --border-dim: #333333;
+        }
+        
+        * { box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-base); 
+            color: var(--text-main); 
+            margin: 0; 
+            padding: 0; 
+            line-height: 1.6;
+            background-image: 
+                linear-gradient(rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0.9)),
+                linear-gradient(0deg, transparent 24%, rgba(255, 0, 60, 0.05) 25%, rgba(255, 0, 60, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 60, 0.05) 75%, rgba(255, 0, 60, 0.05) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(255, 0, 60, 0.05) 25%, rgba(255, 0, 60, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 60, 0.05) 75%, rgba(255, 0, 60, 0.05) 76%, transparent 77%, transparent);
+            background-size: 100% 100%, 50px 50px, 50px 50px;
+        }
+
+        /* --- GLITCH ANIMATION --- */
+        .glitch-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        .glitch {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            position: relative;
+            color: var(--text-main);
+            letter-spacing: 2px;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-base);
+        }
+        .glitch::before {
+            left: 3px;
+            text-shadow: -2px 0 var(--neon-red);
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -3px;
+            text-shadow: -2px 0 var(--cyber-blue);
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim 2.5s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(10px, 9999px, 80px, 0); }
+            20% { clip: rect(30px, 9999px, 10px, 0); }
+            40% { clip: rect(50px, 9999px, 90px, 0); }
+            60% { clip: rect(70px, 9999px, 20px, 0); }
+            80% { clip: rect(90px, 9999px, 60px, 0); }
+            100% { clip: rect(15px, 9999px, 40px, 0); }
+        }
+
+        header { 
+            padding: 6rem 2rem 4rem; 
+            text-align: center; 
+            border-bottom: 1px solid var(--neon-red); 
+            position: relative;
+            overflow: hidden;
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--neon-red);
+            box-shadow: 0 0 15px var(--neon-red);
+        }
+
+        .header-subtitle { 
+            font-family: 'Fira Code', monospace;
+            color: var(--neon-red); 
+            font-size: 1.1rem; 
+            letter-spacing: 1px;
+            margin-top: 1rem;
+            text-transform: uppercase;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
+        
+        h2 { 
+            font-family: 'Syncopate', sans-serif;
+            color: var(--text-main); 
+            font-size: 1.8rem; 
+            text-transform: uppercase;
+            border-left: 4px solid var(--neon-red);
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        /* --- HIGHLIGHT BOX (BRUTALIST) --- */
+        .highlight-box { 
+            background: var(--bg-surface); 
+            border: 1px solid var(--border-dim);
+            padding: 2rem; 
+            margin-bottom: 2rem; 
+            position: relative;
+            /* Cyberpunk clipped corners */
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+        }
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--neon-red);
+            box-shadow: 0 0 10px var(--neon-red);
+        }
+        .highlight-box p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin: 0;
+        }
+        .highlight-box strong {
+            color: var(--text-main);
+            background-color: rgba(255, 0, 60, 0.2);
+            padding: 0 4px;
+        }
+
+        .tags-container { margin-top: 1.5rem; }
+        .tag { 
+            display: inline-block; 
+            background: transparent; 
+            color: var(--neon-white);
+            border: 1px solid var(--neon-red);
+            padding: 0.4rem 1rem; 
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem; 
+            margin: 0.3rem 0.3rem 0 0; 
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        .tag:hover {
+            background: var(--neon-red);
+            box-shadow: 0 0 10px var(--neon-red);
+            color: #000;
+        }
+
+        /* --- CYBERPUNK GRID CARDS --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+        
+        .card { 
+            background-color: var(--bg-surface); 
+            padding: 2rem; 
+            position: relative;
+            border: 1px solid var(--border-dim); 
+            transition: all 0.3s ease; 
+            clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+        }
+        /* Top-right corner accent */
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 15px; height: 15px;
+            background: var(--border-dim);
+            transition: background 0.3s;
+        }
+        .card:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--neon-red); 
+            box-shadow: 0 10px 30px -5px rgba(255, 0, 60, 0.15); 
+        }
+        .card:hover::after {
+            background: var(--neon-red);
+            box-shadow: 0 0 10px var(--neon-red);
+        }
+
+        .card h3 { 
+            font-family: 'Fira Code', monospace;
+            margin-top: 0; 
+            color: var(--text-main); 
+            font-size: 1.2rem; 
+            border-bottom: 1px solid var(--border-dim);
+            padding-bottom: 0.8rem;
+        }
+        
+        .metric-container { margin: 1.5rem 0; }
+        .metric { 
+            font-family: 'Syncopate', sans-serif;
+            font-weight: 700; 
+            color: var(--neon-red); 
+            font-size: 2.5rem; 
+            margin: 0; 
+            line-height: 1;
+            text-shadow: 0 0 15px rgba(255, 0, 60, 0.4); 
+        }
+        .sub-metric { 
+            color: var(--text-muted); 
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem; 
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .card p { font-size: 0.95rem; color: #94a3b8; }
+        .card strong { color: var(--text-main); font-family: 'Fira Code', monospace; font-size: 0.85rem; letter-spacing: 0.5px;}
+
+        a { color: var(--neon-red); text-decoration: none; font-weight: bold; position: relative;}
+        a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px; left: 0; width: 0%; height: 2px;
+            background: var(--neon-red);
+            transition: width 0.3s;
+        }
+        a:hover::before { width: 100%; box-shadow: 0 0 5px var(--neon-red); }
+
+        footer { 
+            text-align: center; 
+            padding: 2rem; 
+            background-color: var(--bg-surface); 
+            color: var(--border-dim); 
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-dim); 
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Diego</h1>
-        <p>Editor de Vídeo | Especialista em Engajamento Viral, Retenção e Automação</p>
+        <div class="glitch-wrapper">
+            <h1 class="glitch" data-text="DIEGO // CORE">DIEGO // CORE</h1>
+        </div>
+        <p class="header-subtitle">Viral Engagement Engineer | Cloud Automation Specialist</p>
     </header>
+
     <div class="container">
         <section>
-            <h2>Sobre Mim</h2>
+            <h2>SYS.ABOUT()</h2>
             <div class="highlight-box">
-                <p style="margin:0;">Especialista na engenharia da atenção. Minhas edições não apenas contam histórias, mas são otimizadas algoritmicamente para máxima retenção, resultando em <strong>vídeos que ultrapassam a marca de Meio Milhão de visualizações orgânicas</strong>. Domino desde formatos curtos hiper-dinâmicos até automação de cortes na nuvem.</p>
-            </div>
-            <div>
-                <span class="tag">Premiere Pro</span> <span class="tag">CapCut Pro</span> <span class="tag">After Effects</span> <span class="tag">Python (Automação)</span> <span class="tag">Engajamento Viral</span>
+                <p><strong>ENGINEER OF ATTENTION.</strong> Não apenas conto histórias; eu engajo algoritmos. Utilizando ganchos psicológicos agressivos, micro-retenção acelerada e automação de fluxos de vídeo na nuvem (Python), eu forjo conteúdo projetado para escalar massivamente. <strong>+500K visualizações orgânicas não é sorte; é uma métrica calculada.</strong></p>
+                <div class="tags-container">
+                    <span class="tag">Premiere Pro</span>
+                    <span class="tag">CapCut Pro</span>
+                    <span class="tag">After Effects</span>
+                    <span class="tag">Python Automations</span>
+                    <span class="tag">Algorithm Hacking</span>
+                </div>
             </div>
         </section>
 
-        <section>
-            <h2>🚀 Explosão de Views (Cases Principais)</h2>
+        <section style="margin-top: 4rem;">
+            <h2>SYS.METRICS()</h2>
             <div class="grid">
                 <!-- Case 1: Instagram (The 524k beast) -->
                 <div class="card">
-                    <h3>Instagram Reels (@subindoseuqi)</h3>
-                    <p class="metric">524.000+ Views</p>
-                    <p class="sub-metric">Múltiplos hits virais (190k, 109k, 25k)</p>
-                    <p><strong>Desafio:</strong> Reter a atenção do público em nichos de humor/lifestyle e comportamento.</p>
-                    <p><strong>Execução:</strong> Edição limpa, timing cômico perfeito, cortes em "L" e dinâmicas de vlog que resultaram em mais de meio milhão de visualizações em um único vídeo orgânico.</p>
+                    <h3>INSTAGRAM_REELS.exe</h3>
+                    <div class="metric-container">
+                        <span class="metric" data-target="524000">0</span><span class="metric" style="font-size: 1.5rem;">+</span>
+                        <p class="sub-metric">Views Orgânicas (@subindoseuqi)</p>
+                    </div>
+                    <p><strong>CHALLENGE:</strong> Reter a atenção de scrollers hiperativos em nichos de comportamento.</p>
+                    <p><strong>EXECUTION:</strong> Sound design visceral, timing cômico cirúrgico e cortes "J" e "L" invisíveis, culminando em múltiplos hits virais (190k, 109k) a partir do zero.</p>
                 </div>
+                
                 <!-- Case 2: TikTok -->
                 <div class="card">
-                    <h3>TikTok: Nicho Geek (@meu.treino8)</h3>
-                    <p class="metric">56.600+ Views</p>
-                    <p class="sub-metric">Sequência de hits (39.4k, 35.5k)</p>
-                    <p><strong>Resultados:</strong> 34.8k+ curtidas e crescimento acelerado no nicho de Manhuas/Animes.</p>
-                    <p><strong>Execução:</strong> Hooks imersivos nos primeiros 3s, sound design épico e cortes super dinâmicos para sincronizar com a narrativa.</p>
+                    <h3>TIKTOK_GEEK.exe</h3>
+                    <div class="metric-container">
+                        <span class="metric" data-target="56600">0</span><span class="metric" style="font-size: 1.5rem;">+</span>
+                        <p class="sub-metric">Views Constantes (@meu.treino8)</p>
+                    </div>
+                    <p><strong>RESULTS:</strong> 34.8k+ curtidas, estabelecendo tração imediata no nicho de cultura pop/anime.</p>
+                    <p><strong>EXECUTION:</strong> Ganchos visuais ultra-dinâmicos nos primeiros 3s acoplados a trilhas épicas em *beat-sync* perfeito para dominar a FYP.</p>
                 </div>
+                
                 <!-- Case 3: YouTube -->
                 <div class="card">
-                    <h3>YouTube: Reacts (@CapituloV.I.P)</h3>
-                    <p class="metric">370 Vídeos Publicados</p>
-                    <p><strong>Resultados:</strong> Fluxo de trabalho de alta demanda com identidade visual marcante.</p>
-                    <p><strong>Execução:</strong> Layout de React Inteligente (PiP), escalabilidade de produção (batch editing) e manutenção constante de retenção no YouTube Shorts.</p>
+                    <h3>YOUTUBE_SHORTS.exe</h3>
+                    <div class="metric-container">
+                        <span class="metric" data-target="370">0</span>
+                        <p class="sub-metric">Vídeos Lançados (@CapituloV.I.P)</p>
+                    </div>
+                    <p><strong>RESULTS:</strong> Pipeline de altíssimo rendimento (High Output) preservando retenção.</p>
+                    <p><strong>EXECUTION:</strong> Arquitetura de PiP (Picture-in-Picture) automatizada, templates reutilizáveis no Premiere e batch-editing brutalista para máxima eficiência.</p>
                 </div>
+                
                 <!-- Case 4: Cloud Automation -->
                 <div class="card">
-                    <h3>Automação de Cortes (Cloud)</h3>
-                    <p class="metric">Pipeline Automatizada</p>
-                    <p><strong>Repositório:</strong> <a href="https://github.com/Catdiegovdl5/corte-vidoes" target="_blank">Projeto Corte Vídeos</a></p>
-                    <p><strong>Execução:</strong> Para ir além da edição manual, desenvolvi scripts em Python para analisar vídeos, identificar os momentos com maior potencial viral e gerar layouts de react (Picture-in-Picture) automaticamente.</p>
+                    <h3>CLOUD_FACTORY.py</h3>
+                    <div class="metric-container">
+                        <p class="metric" style="font-size: 1.8rem; letter-spacing: -1px;">AUTOMATED</p>
+                        <p class="sub-metric">Cortes por IA</p>
+                    </div>
+                    <p><strong>TARGET:</strong> <a href="https://github.com/Catdiegovdl5/corte-vidoes" target="_blank">Acessar Repositório //</a></p>
+                    <p><strong>EXECUTION:</strong> Scripts hardcore em Python que capturam métricas virais na nuvem, decupam silêncios e geram cortes curtos automaticamente utilizando machine learning para escalar a produção de vídeo em 10x.</p>
                 </div>
             </div>
         </section>
     </div>
+
     <footer>
-        <p>Portfólio 2026 | Desenvolvido para Alta Conversão</p>
+        <p>> SYS_SHUTDOWN // DEVELOPED FOR HIGH CONVERSION // 2026</p>
     </footer>
+
+    <script>
+        // Number Counter Animation via IntersectionObserver
+        const metrics = document.querySelectorAll('.metric[data-target]');
+        
+        const animateValue = (obj, start, end, duration) => {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                // Easing function: easeOutQuart
+                const easeProgress = 1 - Math.pow(1 - progress, 4);
+                
+                // Format numbers with dot thousands separator
+                const currentVal = Math.floor(easeProgress * (end - start) + start);
+                obj.innerHTML = currentVal.toLocaleString('pt-BR');
+                
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    const target = parseInt(entry.target.getAttribute('data-target'), 10);
+                    animateValue(entry.target, 0, target, 2500);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        metrics.forEach(metric => {
+            observer.observe(metric);
+        });
+    </script>
 </body>
 </html>
