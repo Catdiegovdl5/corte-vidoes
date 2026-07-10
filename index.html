@@ -180,6 +180,21 @@
             border: 1px solid var(--border-dim); 
             transition: all 0.3s ease; 
             clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-bg-1 {
+            background-image: linear-gradient(to bottom, rgba(5,5,5,0.6) 0%, rgba(5,5,5,0.95) 70%), url('assets/photo_1.jpg');
+        }
+        .card-bg-2 {
+            background-image: linear-gradient(to bottom, rgba(5,5,5,0.6) 0%, rgba(5,5,5,0.95) 70%), url('assets/photo_2.jpg');
+        }
+        .card-bg-3 {
+            background-image: linear-gradient(to bottom, rgba(5,5,5,0.6) 0%, rgba(5,5,5,0.95) 70%), url('assets/photo_3.jpg');
+        }
+        .card-bg-4 {
+            background-image: linear-gradient(to bottom, rgba(5,5,5,0.8) 0%, rgba(5,5,5,0.95) 100%);
         }
         /* Top-right corner accent */
         .card::after {
@@ -278,7 +293,7 @@
             <h2>SYS.METRICS()</h2>
             <div class="grid">
                 <!-- Case 1: Instagram (The 524k beast) -->
-                <div class="card">
+                <div class="card card-bg-1">
                     <h3>INSTAGRAM_REELS.exe</h3>
                     <div class="metric-container">
                         <span class="metric" data-target="524000">0</span><span class="metric" style="font-size: 1.5rem;">+</span>
@@ -289,7 +304,7 @@
                 </div>
                 
                 <!-- Case 2: TikTok -->
-                <div class="card">
+                <div class="card card-bg-2">
                     <h3>TIKTOK_GEEK.exe</h3>
                     <div class="metric-container">
                         <span class="metric" data-target="56600">0</span><span class="metric" style="font-size: 1.5rem;">+</span>
@@ -300,7 +315,7 @@
                 </div>
                 
                 <!-- Case 3: YouTube -->
-                <div class="card">
+                <div class="card card-bg-3">
                     <h3>YOUTUBE_SHORTS.exe</h3>
                     <div class="metric-container">
                         <span class="metric" data-target="370">0</span>
@@ -311,7 +326,7 @@
                 </div>
                 
                 <!-- Case 4: Cloud Automation -->
-                <div class="card">
+                <div class="card card-bg-4">
                     <h3>CLOUD_FACTORY.py</h3>
                     <div class="metric-container">
                         <p class="metric" style="font-size: 1.8rem; letter-spacing: -1px;">AUTOMATIZADO</p>
