@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Diego Santos | Engenheiro da Atenção e Automação">
+    <link rel="icon" type="image/jpeg" href="../assets/favicon.jpg">
+    <title>Diego Santos | @diegogrowth</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Syncopate:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Variables from our main cyberpunk theme */
+        :root {
+            --bg-base: #050505;
+            --bg-surface: #0a0a0c;
+            --neon-red: #ff003c;
+            --text-main: #f8f8f2;
+            --cyber-blue: #00f0ff;
+            --border-dim: #333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            background-image: 
+                linear-gradient(rgba(255, 0, 60, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 60, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Avatar */
+        .avatar-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--neon-red);
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.4);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Glitch Effect Name */
+        .glitch-wrapper { position: relative; display: inline-block; margin-bottom: 0.5rem; }
+        .glitch {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            position: relative;
+            color: var(--text-main);
+            letter-spacing: 1px;
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.8;
+        }
+        .glitch::before { left: 2px; text-shadow: -2px 0 var(--neon-red); animation: glitch-anim 2s infinite linear alternate-reverse; }
+        .glitch::after { left: -2px; text-shadow: -2px 0 var(--cyber-blue); animation: glitch-anim 3s infinite linear alternate-reverse; }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(44px, 9999px, 11px, 0); }
+            100% { clip: rect(15px, 9999px, 40px, 0); }
+        }
+
+        .bio {
+            font-family: 'Fira Code', monospace;
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+        }
+
+        /* Links/Buttons */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .link-btn {
+            display: block;
+            background-color: var(--bg-surface);
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 1.2rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            border: 1px solid var(--border-dim);
+            transition: all 0.3s ease;
+            position: relative;
+            /* Brutalist corners */
+            clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+        }
+
+        .link-btn:hover {
+            background-color: #000;
+            border-color: var(--neon-red);
+            color: var(--neon-red);
+            box-shadow: 0 0 20px rgba(255,0,60,0.3);
+            transform: scale(1.02);
+        }
+
+        /* Social Icons Footer */
+        .social-footer {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-dim);
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 4px; /* Slightly brutalist */
+        }
+
+        .social-icon:hover {
+            border-color: var(--neon-red);
+            background: rgba(255,0,60,0.1);
+            color: var(--neon-red);
+            box-shadow: 0 0 15px rgba(255,0,60,0.4);
+            transform: translateY(-5px);
+        }
+        
+        .social-icon svg { width: 22px; height: 22px; fill: currentColor; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Avatar -->
+        <div class="avatar-container">
+            <img src="assets/avatar.jpg" alt="Diego Growth Avatar" class="avatar">
+        </div>
+
+        <!-- Name & Bio -->
+        <div class="glitch-wrapper">
+            <h1 class="glitch" data-text="@diegogrowth">@diegogrowth</h1>
+        </div>
+        <p class="bio">> Diego Santos<br>> Ajudo-te a automatizar o teu trabalho e a recuperar horas do teu dia com IA.</p>
+
+        <!-- Link Buttons -->
+        <div class="links-container">
+            <a href="../index.html" class="link-btn">> Portfólio: Audiovisual & Fábrica de Cortes</a>
+            <a href="https://catdiegovdl5.github.io/job/" class="link-btn">> Portfólio: Growth, IA & Automação B2B</a>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="social-footer">
+            <!-- Instagram -->
+            <a href="https://instagram.com/diego.antoniosantos" target="_blank" class="social-icon" title="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <!-- Email -->
+            <a href="mailto:9919622diego@gmail.com" class="social-icon" title="E-mail">
+                <svg viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+            </a>
+            <!-- WhatsApp -->
+            <a href="https://wa.me/5543991652706" target="_blank" class="social-icon" title="WhatsApp">
+                <svg viewBox="0 0 24 24"><path d="M24 11.667c0 6.401-5.385 11.633-11.966 11.633-2.073 0-4.015-.52-5.748-1.428l-6.286 1.638 1.674-6.009c-1.042-1.782-1.64-3.867-1.64-6.096 0-6.401 5.385-11.405 11.966-11.405s11.966 5.004 11.966 11.405zm-11.966-9.67c-5.467 0-9.922 4.316-9.922 9.605 0 2.148.718 4.12 1.936 5.698l-1.033 3.712 3.861-1.009c1.5.998 3.328 1.583 5.3 1.583 5.467 0 9.922-4.316 9.922-9.605s-4.455-9.984-9.922-9.984zm5.551 12.923c-.305-.148-1.787-.853-2.062-.953-.274-.099-.474-.148-.675.148-.202.296-.782.953-.959 1.149-.176.198-.352.222-.657.074-1.685-.826-2.91-1.79-3.957-3.411-.176-.274.004-.403.149-.553.136-.141.305-.347.456-.521.151-.174.202-.296.303-.495.1-.198.05-.371-.026-.521-.075-.148-.675-1.582-.924-2.164-.241-.565-.487-.488-.675-.497-.176-.008-.378-.008-.579-.008-.202 0-.528.074-.805.371-.277.296-1.054 1.001-1.054 2.441s1.08 2.835 1.232 3.033c.151.198 2.112 3.125 5.116 4.343 2.138.868 2.973 1.002 4.015.845 1.157-.175 3.141-1.246 3.585-2.449.444-1.203.444-2.234.311-2.449-.133-.216-.484-.34-.789-.488z"/></svg>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
