@@ -83,14 +83,19 @@
             100% { clip: rect(15px, 9999px, 40px, 0); }
         }
 
-        header { 
-            padding: 6rem 2rem 4rem; 
-            text-align: center; 
-            border-bottom: 1px solid var(--neon-red); 
+        /* --- VIDEO BACKGROUND HEADER --- */
+        .video-header {
             position: relative;
+            padding: 8rem 2rem 6rem;
+            text-align: center;
+            border-bottom: 1px solid var(--neon-red);
             overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        header::after {
+        .video-header::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -99,6 +104,33 @@
             height: 4px;
             background: var(--neon-red);
             box-shadow: 0 0 15px var(--neon-red);
+            z-index: 2;
+        }
+        .bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: 0;
+            object-fit: cover;
+        }
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.7) 0%, rgba(5,5,5,1) 100%);
+            z-index: 1;
+        }
+        .header-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
         }
 
         .header-subtitle { 
@@ -122,6 +154,52 @@
             margin-bottom: 2rem;
             display: inline-block;
         }
+
+        /* --- FAKE TERMINAL --- */
+        .fake-terminal {
+            background: #0a0a0c;
+            border: 1px solid var(--border-dim);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+        .terminal-header {
+            background: #1a1a1c;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border-dim);
+        }
+        .btn-close, .btn-min, .btn-max { width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+        .btn-close { background: #ff5f56; }
+        .btn-min { background: #ffbd2e; }
+        .btn-max { background: #27c93f; }
+        .terminal-title { color: #94a3b8; font-family: 'Fira Code', monospace; font-size: 0.85rem; margin-left: 10px; }
+        .terminal-body {
+            padding: 1.5rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+            color: var(--cyber-blue);
+            min-height: 250px;
+            max-height: 250px;
+            overflow-y: auto;
+            line-height: 1.6;
+        }
+        .log-line { margin: 0 0 0.5rem 0; opacity: 0; animation: fadeIn 0.1s forwards; }
+        .log-success { color: #27c93f; }
+        .log-warn { color: #ffbd2e; }
+        .log-error { color: var(--neon-red); }
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            background: var(--cyber-blue);
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
         /* --- HIGHLIGHT BOX (BRUTALIST) --- */
         .highlight-box { 
@@ -267,11 +345,17 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="glitch-wrapper">
-            <h1 class="glitch" data-text="DIEGO // CORE">DIEGO // CORE</h1>
+    <header class="video-header">
+        <video autoplay loop muted playsinline class="bg-video">
+            <source src="assets/bg_video.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+        <div class="header-content">
+            <div class="glitch-wrapper">
+                <h1 class="glitch" data-text="DIEGO // CORE">DIEGO // CORE</h1>
+            </div>
+            <p class="header-subtitle">Viral Engagement Engineer | Cloud Automation Specialist</p>
         </div>
-        <p class="header-subtitle">Viral Engagement Engineer | Cloud Automation Specialist</p>
     </header>
 
     <div class="container">
@@ -285,6 +369,21 @@
                     <span class="tag">After Effects</span>
                     <span class="tag">Python Automations</span>
                     <span class="tag">Algorithm Hacking</span>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top: 4rem;">
+            <h2>SYS.LOGS()</h2>
+            <div class="fake-terminal">
+                <div class="terminal-header">
+                    <span class="btn-close"></span>
+                    <span class="btn-min"></span>
+                    <span class="btn-max"></span>
+                    <span class="terminal-title">bash -- ~ /corte-vidoes/cloud_factory.py</span>
+                </div>
+                <div class="terminal-body" id="fake-console">
+                    <!-- Logs gerados dinamicamente via JS -->
                 </div>
             </div>
         </section>
@@ -339,8 +438,22 @@
         </section>
     </div>
 
-    <footer>
-        <p>> SYS_SHUTDOWN // DEVELOPED FOR HIGH CONVERSION // 2026</p>
+    <footer class="contact-footer">
+        <div class="container" style="padding-top:0;">
+            <h2>SYS.CONTACT()</h2>
+            <form id="contact-form" class="contact-terminal">
+                <div class="terminal-body" style="min-height: auto; max-height:none;">
+                    <p>> [root@diego ~]# INITIALIZE_CONTACT_PROTOCOL</p>
+                    <div class="input-line">
+                        <span>> ENTER_YOUR_EMAIL: </span>
+                        <input type="email" required placeholder="seu@email.com" id="email-input">
+                        <button type="submit">_ENTER</button>
+                    </div>
+                    <p id="contact-success" style="display:none; color: #27c93f; margin-top: 1rem;">> [SUCCESS] Protocolo iniciado. Verifique sua caixa de entrada em breve.</p>
+                </div>
+            </form>
+            <p style="margin-top:3rem;">> SYS_SHUTDOWN // DEVELOPED FOR HIGH CONVERSION // 2026</p>
+        </div>
     </footer>
 
     <script>
@@ -352,10 +465,8 @@
             const step = (timestamp) => {
                 if (!startTimestamp) startTimestamp = timestamp;
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                // Easing function: easeOutQuart
                 const easeProgress = 1 - Math.pow(1 - progress, 4);
                 
-                // Format numbers with dot thousands separator
                 const currentVal = Math.floor(easeProgress * (end - start) + start);
                 obj.innerHTML = currentVal.toLocaleString('pt-BR');
                 
@@ -378,6 +489,57 @@
 
         metrics.forEach(metric => {
             observer.observe(metric);
+        });
+
+        // Fake Console Script
+        const fakeConsole = document.getElementById('fake-console');
+        const logs = [
+            "[INIT] Booting Cloud Factory...",
+            "[SYS] Conectando ao repositório de raw footage.",
+            "[INFO] Vídeo fonte detectado: 45 min. Analisando waveforms...",
+            "<span class='log-warn'>[AI] 14 espaços em branco profundos detectados. Aplicando corte 'J' e 'L'.</span>",
+            "[AI] Gerando B-Rolls dinâmicos via script...",
+            "[SYS] Inserindo trilha sonora em beat-sync perfeito.",
+            "<span class='log-success'>[SUCCESS] Vídeo compilado. Retenção algorítmica estimada: 94%.</span>",
+            "[SYS] Exportando arquivo para publicação..."
+        ];
+
+        let logIndex = 0;
+        
+        function typeLog() {
+            if(logIndex < logs.length) {
+                const p = document.createElement('p');
+                p.className = 'log-line';
+                p.innerHTML = "> " + logs[logIndex];
+                fakeConsole.appendChild(p);
+                fakeConsole.scrollTop = fakeConsole.scrollHeight;
+                logIndex++;
+                setTimeout(typeLog, Math.random() * 1200 + 400);
+            } else {
+                const cursor = document.createElement('span');
+                cursor.className = 'cursor';
+                fakeConsole.appendChild(cursor);
+            }
+        }
+        
+        // Start typing after 1s
+        if(fakeConsole) setTimeout(typeLog, 1000);
+
+        // Contact Form
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            const input = document.getElementById('email-input');
+            const success = document.getElementById('contact-success');
+            
+            btn.innerHTML = 'PROCESSING...';
+            btn.style.pointerEvents = 'none';
+            input.disabled = true;
+            
+            setTimeout(() => {
+                success.style.display = 'block';
+                btn.innerHTML = '_DONE';
+            }, 1500);
         });
     </script>
 </body>
